@@ -1,0 +1,17 @@
+direction: down
+
+vars: {
+  d2-config: {
+    theme-id: 3
+    dark-theme-id: 200
+  }
+}
+
+caller: Caller\n(person or parent agent)
+
+supervisor: Agent Supervisor\n(confirm, check, continue)
+
+worker: Worker agent\n(Codex, Claude, or local)
+
+caller <-> supervisor: Task + criteria / completion or blocker
+supervisor <-> worker: Work or correction / result + evidence

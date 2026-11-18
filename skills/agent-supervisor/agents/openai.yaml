@@ -1,0 +1,3 @@
+interface:
+  display_name: "Agent Supervisor"
+  short_description: "Supervise agent work against confirmed requirements"
