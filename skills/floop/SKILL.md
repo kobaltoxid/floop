@@ -1,11 +1,11 @@
 ---
-name: agent-supervisor
-description: "Supervise delegated AI work against caller-confirmed requirements. Review evidence, request bounded corrections, and report completion or unresolved issues. Use when monitoring or verifying another agent's task."
+name: floop
+description: "Close delegated AI work against caller-confirmed requirements. Review supplied evidence, request bounded corrections, and report completion or unresolved issues. Use when verifying another agent's task."
 ---
 
-# Agent Supervisor
+# floop
 
-Close the acceptance loop for one delegated AI task. The caller may be a person or a parent agent. The worker may be a Codex, Claude, or local agent, but you can only control sessions the host exposes.
+Close the acceptance loop for one delegated AI task. The caller may be a person or a parent agent. The worker may be a Codex, Claude, or local agent. floop is only a skill workflow: use session controls and evidence exposed by the host, and do not imply that floop provides a monitor or runtime adapter.
 
 ## Select a supervision mode
 

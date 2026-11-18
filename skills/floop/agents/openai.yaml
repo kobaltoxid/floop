@@ -1,0 +1,3 @@
+interface:
+  display_name: "floop"
+  short_description: "Close delegated work against confirmed requirements"

@@ -1,6 +1,6 @@
 # Acceptance Contract
 
-The acceptance contract is the supervisor's source of truth for deciding whether a run is complete. It should be understandable to the caller, actionable for the worker, and checkable by the verifier.
+floop uses the acceptance contract to decide whether a delegated task is complete. The contract should be understandable to the caller, actionable for the worker, and checkable by the verifier.
 
 ## Requirement resolution
 

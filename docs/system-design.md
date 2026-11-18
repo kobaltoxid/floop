@@ -2,13 +2,13 @@
 
 ## Goal and constraints
 
-This design describes a proposed supervisor that checks completed agent work against a caller-confirmed contract and either closes the run or requests a focused continuation.
+This design describes how floop checks completed agent work against a caller-confirmed contract and either closes the run or requests a focused continuation.
 
-- **Reader:** contributors extending the skill prototype and planning runtime adapters.
+- **Reader:** contributors maintaining the skill and planning possible runtime adapters.
 - **Goal:** make task completion evidence-based while keeping the caller at the goal and policy level.
 - **Constraints:** the caller can be a person or a parent agent; worker runtimes differ; continuations must be bounded.
 
-The initial implementation is a supplementary skill. It runs inline by default and can spawn one dedicated supervisor session when requested. Runtime adapters, durable storage, and live session control are not implemented yet.
+The initial release is an installable Codex skill. It runs inline by default and can use one dedicated supervisor session when requested, if the host supports session control. Runtime adapters, durable storage, and live session control are not included.
 
 ## Context and components
 
