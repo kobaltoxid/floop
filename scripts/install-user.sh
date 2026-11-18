@@ -3,6 +3,8 @@ set -euo pipefail
 
 repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 home_dir="${HOME:?HOME must be set}"
+# Claude Code reads skills from CLAUDE_CONFIG_DIR when it is set, not ~/.claude.
+claude_dir="${CLAUDE_CONFIG_DIR:-$home_dir/.claude}"
 targets=("$home_dir/.agents/skills/floop")
 
 if [[ $# -gt 1 ]]; then
@@ -18,7 +20,7 @@ if [[ ! -f "$repo_root/skills/floop/SKILL.md" ]]; then
     exit 1
 fi
 if [[ $# -eq 1 ]]; then
-    targets+=("$home_dir/.claude/skills/floop")
+    targets+=("$claude_dir/skills/floop")
 fi
 
 preflight_target() {

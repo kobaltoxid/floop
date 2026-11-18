@@ -22,21 +22,29 @@ To install into Claude Code's personal skills directory as well, opt in explicit
 ~/.local/share/floop/scripts/install-user.sh --claude
 ```
 
-The Claude installation is only a compatible skill link; floop's documented workflow and primary target remain Codex.
+Claude Code reads skills from `$CLAUDE_CONFIG_DIR/skills` when `CLAUDE_CONFIG_DIR` is set, and from `~/.claude/skills` otherwise. The installer follows the same rule. If you keep several Claude Code profiles, such as separate personal and work accounts, run the installer once per profile:
+
+```sh
+CLAUDE_CONFIG_DIR=~/.claude-work ~/.local/share/floop/scripts/install-user.sh --claude
+```
+
+Repeat runs are safe; links that already point to this checkout are reported as `Already linked`. The Claude installation is only a compatible skill link; floop's documented workflow and primary target remain Codex.
+
+Every link points to the same checkout. To update floop for all profiles, run `git -C ~/.local/share/floop pull` and start a new session.
 
 ## Use
 
-Ask Codex to use the `floop` skill when you want to supervise one delegated task. Provide the task, its acceptance criteria (or a file containing them), and the worker result or session reference that the host exposes. The skill confirms the contract, evaluates each criterion as `pass`, `fail`, or `unknown`, and returns a concise disposition: `complete`, `needs-caller`, or `limit-reached`.
+Invoke `$floop` in Codex or `/floop` in Claude Code when you want to supervise one delegated task. Provide the task, its acceptance criteria (or a file containing them), and the worker result or session reference that the host exposes. The skill confirms the contract, evaluates each criterion as `pass`, `fail`, or `unknown`, and returns a concise disposition: `complete`, `needs-caller`, or `limit-reached`.
 
 If the host cannot expose a worker session, floop can review artifacts supplied by the caller, but it labels the run `review-only` and never claims to have monitored or continued a live session.
 
 ## Completion loop
 
-The caller confirms the acceptance criteria before floop evaluates the worker's result. floop records evidence for each criterion and can request focused corrections from the same worker when a required check fails.
+The caller, a person or a parent agent, confirms the acceptance criteria before floop evaluates the worker's result. The worker may be a Codex, Claude, or local agent. floop records evidence for each criterion. When a required check fails, it sends a focused correction to the same worker and rechecks the result, up to two times by default.
 
-![Sequence diagram showing the caller exchanging task criteria and outcomes with floop, and floop exchanging work, corrections, results, and evidence with the worker.](docs/diagrams/completion-loop.svg)
+![The caller sends a task and criteria to floop. floop sends work or a correction to the worker agent and receives a result and evidence, then returns completion or a blocker to the caller.](docs/diagrams/completion-loop.svg)
 
-Figure 1. floop returns completion or blockers to the caller. See the [D2 source](docs/diagrams/completion-loop.d2) or [PNG preview](docs/diagrams/completion-loop.png).
+Figure 1. floop loops with the worker until every required criterion passes or a blocker remains. See the [D2 source](docs/diagrams/completion-loop.d2) or [PNG preview](docs/diagrams/completion-loop.png).
 
 ## Project documents
 

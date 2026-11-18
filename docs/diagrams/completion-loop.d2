@@ -1,4 +1,4 @@
-direction: down
+direction: right
 
 vars: {
   d2-config: {
@@ -7,11 +7,15 @@ vars: {
   }
 }
 
-caller: Caller\n(person or parent agent)
+caller: Caller {
+  shape: person
+}
 
-supervisor: floop\n(confirm, check, continue)
+floop: floop
 
-worker: Worker agent\n(Codex, Claude, or local)
+worker: "Worker agent\n(Codex, Claude, or local)"
 
-caller <-> supervisor: Task + criteria / completion or blocker
-supervisor <-> worker: Work or correction / result + evidence
+caller -> floop: task + criteria
+floop -> worker: work or correction
+worker -> floop: result + evidence
+floop -> caller: complete or blocker

@@ -16,7 +16,7 @@ The caller supplies the task, requirements or their source, and a worker session
 
 The diagram reduces the design to three roles and two exchanges. Each double-headed arrow pairs a message with its reply; the slash separates the two directions.
 
-![Caller, supervisor, and worker exchange requirements, work, evidence, and outcomes.](diagrams/completion-loop.svg)
+![The caller sends a task and criteria to floop. floop sends work or a correction to the worker agent and receives a result and evidence, then returns completion or a blocker to the caller.](diagrams/completion-loop.svg)
 
 Figure 1. The supervisor exchanges a task and outcome with the caller, and work and evidence with the worker. See the [D2 source](diagrams/completion-loop.d2) or [PNG preview](diagrams/completion-loop.png).
 
