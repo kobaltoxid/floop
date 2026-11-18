@@ -30,6 +30,14 @@ Ask Codex to use the `floop` skill when you want to supervise one delegated task
 
 If the host cannot expose a worker session, floop can review artifacts supplied by the caller, but it labels the run `review-only` and never claims to have monitored or continued a live session.
 
+## Completion loop
+
+The caller confirms the acceptance criteria before floop evaluates the worker's result. floop records evidence for each criterion and can request focused corrections from the same worker when a required check fails.
+
+![Sequence diagram showing the caller exchanging task criteria and outcomes with floop, and floop exchanging work, corrections, results, and evidence with the worker.](docs/diagrams/completion-loop.svg)
+
+Figure 1. floop returns completion or blockers to the caller. See the [D2 source](docs/diagrams/completion-loop.d2) or [PNG preview](docs/diagrams/completion-loop.png).
+
 ## Project documents
 
 - [System design](docs/system-design.md) — the proposed completion loop and capability limits.

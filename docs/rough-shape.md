@@ -4,7 +4,7 @@
 
 floop guides the completion loop for a delegated task. A parent orchestrator may choose the worker and assign work; floop resolves the acceptance criteria, checks the result, requests focused corrections, and reports the outcome to its caller.
 
-The caller may be a person or a parent agent. The worker may run in Codex, Claude, or a local environment, but the first supported runtime has not been selected.
+The caller may be a person or a parent agent. The worker may run in Codex, Claude, or a local environment. floop targets Codex as an installable skill, but it does not provide a runtime adapter for any worker.
 
 ## Initial implementation
 
